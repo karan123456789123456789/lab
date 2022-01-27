@@ -1,0 +1,162 @@
+<?php
+$nameE=' ';
+$rollE=' ';
+$emailErr=' ';
+$phoneE=' ';
+if($_SERVER['REQUEST_METHOD']=="POST"){
+if(empty($_POST["name"])){
+$nameE="name cannot be empty";
+}
+elseif(!preg_match("/^[A-Za-z ]*$/",$_POST["name"]))
+{
+	$nameE="only whitespace and character allowed";
+ }
+ }
+ if($_SERVER['REQUEST_METHOD']=="POST"){
+ if(empty($_POST["roll"])){
+$rollE="roll cannot be empty";
+}
+elseif(!preg_match("/^[0-9]*$/",$_POST["roll"]))
+{
+	$rollE="only number are allowed";
+ }
+ }
+  if($_SERVER['REQUEST_METHOD']=="POST"){
+ if(empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } elseif(!preg_match("/^[a-z0-9]+([_\\.-][a-z0-9]+)*@([a-z0-9]+([\.-][a-z0-9]+)*)+\\.[a-z]{2,}$/i",$_POST["email"]))
+   {
+      $emailErr = "Invalid email format"; 
+    }
+  }
+  
+    
+	 if($_SERVER['REQUEST_METHOD']=="POST"){
+	 if(empty($_POST["phone"])) {
+		 $phoneE = "phone number cannot be empty";
+    } 
+	elseif(!preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/",$_POST["phone"]))
+  {
+	     $phoneE="only phone number is reqiuired";
+  }
+	 }
+	 ?>
+
+
+
+<html>	
+	<head>
+		
+		 <title> </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		 <link rel="stylesheet" href= 
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	 
+     <style> 
+  *{
+  margin=0;
+  padding=0;
+  font-family:"source sans pro",sans-serif;
+  }
+   body{
+   background image:url("student.jpg");
+   background-size:cover;
+   }
+   
+ .container{
+	 display:flex;
+	  justify-content:center;
+	  align-items:center;
+	  width:98vw;
+	  height:97vh;
+ }
+          .innner{
+			    width:30vw;
+				 height:93vh;
+				 background-color:rgba(255,255,255,0.72);
+				 border-radius:10px;
+		  }
+		  .title{
+			  width:22vw;
+			  height:12vh;
+			  display:flex;
+			  align-items:center;
+			   background-color:rgba(6,234,41,0.38);
+			   color:#ffffff;
+		  }
+		  .title h3{
+			  padding-left:8%;
+			  font-size:2em;
+		  }
+		  .content{
+		  border-buttom:1px solid white;
+		  height:37vh;
+		  }
+		  .txt{
+		   background-color=#fffefe;
+		   margin-top=5%;
+		     margin-left=8%;
+			  width:25vw;
+			  }
+			  .txt1{
+		   background-color=#fffefe;
+		   margin-top=1%;
+		     margin-left=8%;
+			  width:25vw;
+			  }
+			  .txt1 span{
+			  padding-right:2%;
+			   padding-right:2%;
+			   }
+			   .glyphicon{
+			   color:#b2b2b2;
+			   font-size:18px;
+			   }
+			   .content input{
+			   width:22vw;
+			   padding-top:2%;
+			   padding-buttom:2%;
+			   border=0;
+			   }
+			   .content input[placeholder]{
+			   font-size:1.3em;
+			   padding-left:5%;
+			   padding-right:5%;
+			   }
+		        
+		   </style>
+		</head>
+			<body>
+			<form action="#" method="post">
+			<div class ="container">
+			<div class="inner">
+			<div class ="title">
+			<h3> adding new student</h3>
+           </div>
+		   <div class ="content">
+		   <div class="txt">
+		   <input type="text" name="name" roll="" id="txtroll" placeholder="roll">
+		   <span id="c1" class="glyphicon glyphicon-pencil"></span>
+		   </div>
+		   <div class ="txt1">
+		   <input type="text" name="name" value="" id="txtname" placeholder="name">
+		   <span id="c2" class="glyphicon glyphicon-user"></span>
+		   </div>
+		   <div class ="txt2">
+		   <input type="text" name="email" value="" id="txtemail" placeholder="email">
+		   <span id="c3" class="glyphicon glyphicon-envelope"></span>
+		   </div>
+		   <div class ="text3">
+		   <input type="text" name="phone" value="" id="txtphone" placeholder="phone">
+		   <span id="c4" class="glyphicon glyphicon-earphone"></span>
+		   </div>
+		   <div class="btnsub">
+		    <form action="insert.php" method="POST">
+  <input type="submit"/>
+		   </div>
+		   
+             </body>
+		</html>
